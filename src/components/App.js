@@ -1,5 +1,7 @@
 import React, { useState, useReducer } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
+
+import Event from "./Event";
 // indexは省略できる
 import reducer from "../reducers";
 
@@ -21,6 +23,7 @@ const App = () => {
     setTitle("");
     setBody("");
   };
+
   return (
     <div className="container-fluid">
       <h4>イベント作成フォーム</h4>
@@ -48,7 +51,12 @@ const App = () => {
         <button className="btn btn-primary" onClick={addEvent}>
           イベントを作成する
         </button>
-        <button className="btn btn-danger">全てのイベントを削除する</button>
+        <button
+          className="btn btn-danger"
+          onClick={() => dispatch("DELETE_ALL_EVENTS")}
+        >
+          全てのイベントを削除する
+        </button>
       </form>
 
       <h4>イベント一覧</h4>
@@ -61,11 +69,9 @@ const App = () => {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>a</td>
-            <td>a</td>
-            <td>a</td>
-          </tr>
+          {state.map((event, index) => (
+            <Event key={index} event={event} dispatch={dispatch} />
+          ))}
         </tbody>
       </table>
     </div>
