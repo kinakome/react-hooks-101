@@ -1,13 +1,29 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const App = (props) => {
   const [state, setState] = useState(props);
   const { name, price } = state;
 
+  //useEffectはレンダリングのあとで実行される
+  //domが最初に表示される時、変更される時に発火
+  useEffect(() => {
+    console.log("This is like componentDidMount or componentDidUpdate");
+  });
+
+  //空の配列を第二引数に渡してあげると、初回表示時のみ実行される
+  useEffect(() => {
+    console.log("This is like componentDidMount");
+  }, []);
+
+  // 配列の中に、変更を検知したい対象を設定すると、変更時に呼び出される
+  useEffect(() => {
+    console.log("This callback is for name only");
+  }, [name]);
+
   return (
     <>
       <p>
-        現在の{name}は、{price}円です。
+        現在の{name}は、{price}円です.
       </p>
       <button onClick={() => setState({ ...state, price: price + 1 })}>
         +1
