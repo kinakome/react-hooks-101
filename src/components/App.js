@@ -9,6 +9,7 @@ import reducer from "../reducers";
 const App = () => {
   const initialState = {
     events: [],
+    operationLogs: [],
   };
   //第1引数はreducer、第2引数はデフォルトの状態、第3引数は初期化時に呼ぶコールバック
   const [state, dispatch] = useReducer(reducer, initialState);

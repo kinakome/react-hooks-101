@@ -1,5 +1,6 @@
 import { combineReducers } from "redux";
 import events from "./events";
+import operationLogs from "./operationLogs";
 
-// オブジェクトの形でエクスポートされる
-export default combineReducers({ events });
+// rootReducerをオブジェクトの形でエクスポートする
+export default combineReducers({ events, operationLogs });
