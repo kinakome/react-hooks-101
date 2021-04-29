@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 //アクションのtype名を、ひとつのファイルにまとめて定数として管理する
 import { DELETE_EVENT } from "../actions";
+import AppContext from "../contexts/AppContext";
 
-const Event = ({ event, dispatch }) => {
+const Event = ({ event }) => {
+  const { dispatch } = useContext(AppContext);
   const id = event.id;
   const handleClickDeleteButton = () => {
     dispatch({ type: DELETE_EVENT, id });
