@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { CREATE_EVENT, DELETE_ALL_EVENTS } from "../actions";
 
 const EventForm = ({ state, dispatch }) => {
   const [title, setTitle] = useState("");
@@ -8,7 +9,7 @@ const EventForm = ({ state, dispatch }) => {
     e.preventDefault();
     // dispatchでtypeと必要なプロパティを渡す
     dispatch({
-      type: "CREATE_EVENT",
+      type: CREATE_EVENT,
       title,
       body,
     });
@@ -19,7 +20,7 @@ const EventForm = ({ state, dispatch }) => {
 
   const deleteAllEvents = (e) => {
     e.preventDefault();
-    dispatch({ type: "DELETE_ALL_EVENTS" });
+    dispatch({ type: DELETE_ALL_EVENTS });
   };
 
   const unCreatable = title === "" || body === "";
