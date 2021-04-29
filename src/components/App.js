@@ -2,6 +2,7 @@ import React, { useReducer } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import EventForm from "./EventForm";
 import Events from "./Events";
+import OperationLogs from "./OperationLogs";
 import AppContext from "../contexts/AppContext";
 // indexは省略できる
 import reducer from "../reducers";
@@ -19,6 +20,7 @@ const App = () => {
       <div className="container-fluid">
         <EventForm />
         <Events />
+        <OperationLogs />
       </div>
     </AppContext.Provider>
   );
